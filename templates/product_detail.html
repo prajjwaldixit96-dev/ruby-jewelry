@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.title }} | Ruby Jewelry{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb" style="font-size:0.82rem;">
+        <li class="breadcrumb-item"><a href="/" style="color:var(--gold);">Home</a></li>
+        <li class="breadcrumb-item">
+            <a href="/collection/?category={{ product.category.name }}" style="color:var(--gold);">
+                {{ product.category.name }}
+            </a>
+        </li>
+        <li class="breadcrumb-item active" style="color:#888;">{{ product.title }}</li>
+    </ol>
+</nav>
+
+<div class="row g-5">
+
+    <!-- Image -->
+    <div class="col-lg-5">
+        <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:16px; overflow:hidden;">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.title }}"
+                 style="width:100%; max-height:480px; object-fit:cover;">
+            {% else %}
+            <div style="height:350px; display:flex; align-items:center; justify-content:center;">
+                <i class="bi bi-image" style="font-size:4rem; color:#333;"></i>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Info -->
+    <div class="col-lg-7">
+
+        {% if product.category %}
+        <span style="background:#1a1200; color:var(--gold); border:1px solid var(--gold);
+                     font-size:0.75rem; padding:4px 12px; border-radius:20px; font-weight:600;">
+            <i class="bi bi-gem me-1"></i> {{ product.category.name }}
+        </span>
+        {% endif %}
+
+        {% if product.tag %}
+        <span class="ms-2 badge-tag badge-{{ product.tag }}">
+            {% if product.tag == 'bestseller' %}⭐ Bestseller{% else %}🆕 New Arrival{% endif %}
+        </span>
+        {% endif %}
+
+        <h1 style="font-family:'Playfair Display',serif; color:#fff; font-size:1.9rem; font-weight:700; margin:14px 0 8px;">
+            {{ product.title }}
+        </h1>
+
+        <div style="font-size:2rem; font-weight:700; color:var(--gold); margin-bottom:20px;">
+            ₹ {{ product.price }}
+        </div>
+
+        <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; padding:16px; margin-bottom:24px;">
+            <h6 style="color:#999; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Description</h6>
+            <p style="color:#ccc; line-height:1.7; margin:0;">{{ product.description }}</p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3 mb-4">
+            <div style="font-size:0.82rem;">
+                <i class="bi bi-truck" style="color:var(--gold);"></i>
+                <strong style="color:var(--gold);"> Delivery fee applicable</strong>
+            </div>
+            <div style="font-size:0.82rem;">
+                <i class="bi bi-cash-coin" style="color:#5aaa6a;"></i>
+                <span style="color:#5aaa6a; font-weight:600;"> COD Available</span>
+            </div>
+            <div style="font-size:0.82rem; color:#777;">
+                <i class="bi bi-shield-check"></i> Authentic Jewelry
+            </div>
+        </div>
+
+        <div class="d-flex gap-3 flex-wrap">
+            <a href="/cart/add/{{ product.id }}/" class="btn btn-gold btn-lg px-4 flex-fill">
+                <i class="bi bi-bag-plus me-2"></i> Add to Cart
+            </a>
+            <a href="https://wa.me/{{ whatsapp_number }}?text=Hi%20Ruby%20Jewelry%2C%20I%20want%20to%20order%3A%0A%F0%9F%92%8D%20*{{ product.title|urlencode }}*%0A%F0%9F%92%B0%20Price%3A%20%E2%82%B9{{ product.price }}%0A%0APlease%20confirm%20availability."
+               target="_blank" class="btn btn-whatsapp btn-lg px-4 flex-fill">
+                <i class="bi bi-whatsapp me-2"></i> Order on WhatsApp
+            </a>
+        </div>
+
+        <p class="mt-3" style="color:#555; font-size:0.8rem;">
+            <i class="bi bi-info-circle me-1"></i>
+            "Order on WhatsApp" click karein aur seedha humse confirm karein.
+        </p>
+
+    </div>
+</div>
+
+{% if related_products %}
+<div class="mt-5">
+    <h3 class="section-heading mb-4">More in {{ product.category.name }}</h3>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+        {% for rp in related_products %}
+        <div class="col">
+            <div class="product-card">
+                <a href="/product/{{ rp.id }}/">
+                    {% if rp.image %}
+                    <img src="{{ rp.image.url }}" alt="{{ rp.title }}"
+                         style="height:180px; width:100%; object-fit:cover;">
+                    {% else %}
+                    <div style="height:180px; display:flex; align-items:center; justify-content:center; background:#1a1a1a;">
+                        <i class="bi bi-image" style="font-size:2rem; color:#333;"></i>
+                    </div>
+                    {% endif %}
+                </a>
+                <div class="card-body">
+                    <h6><a href="/product/{{ rp.id }}/" class="product-title">{{ rp.title }}</a></h6>
+                    <div class="product-price" style="font-size:0.95rem;">₹ {{ rp.price }}</div>
+                    <a href="/cart/add/{{ rp.id }}/" class="btn btn-gold btn-sm mt-2 w-100">
+                        <i class="bi bi-bag-plus me-1"></i> Add to Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

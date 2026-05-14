@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "Royal Kundan Necklace Set",
+    "price": 1299,
+    "description": "Handcrafted one gram gold necklace set with kundan work. Comes with matching earrings. Perfect for weddings and special occasions.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/d4af37?text=Kundan+Necklace",
+    "category": "One Gram Gold",
+    "tag": "bestseller"
+  },
+  {
+    "id": 2,
+    "title": "Nawabi Choker Set",
+    "price": 999,
+    "description": "Elegant nawabi choker necklace with intricate gold plating. Includes earrings and maangtika. Great for festive wear.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/d4af37?text=Nawabi+Choker",
+    "category": "One Gram Gold",
+    "tag": "new"
+  },
+  {
+    "id": 3,
+    "title": "Classic Polki Earrings",
+    "price": 499,
+    "description": "Beautiful polki style imitation earrings with stone work. Lightweight and comfortable for all-day wear.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/c0c0c0?text=Polki+Earrings",
+    "category": "Imitation Jewelry",
+    "tag": ""
+  },
+  {
+    "id": 4,
+    "title": "Oxidized Bangles Set (12 Pcs)",
+    "price": 349,
+    "description": "Trendy oxidized silver bangles set of 12 pieces. Perfect for casual and ethnic wear. Adjustable size.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/808080?text=Oxidized+Bangles",
+    "category": "Oxidized",
+    "tag": "bestseller"
+  },
+  {
+    "id": 5,
+    "title": "AD Stone Maangtika",
+    "price": 299,
+    "description": "Sparkling American Diamond maangtika with adjustable chain. Adds a royal touch to any bridal look.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/87ceeb?text=AD+Maangtika",
+    "category": "AD Stone",
+    "tag": "new"
+  },
+  {
+    "id": 6,
+    "title": "Anti Tarnish Gold Bracelet",
+    "price": 599,
+    "description": "Premium anti-tarnish gold plated bracelet that stays shiny for long. Ideal for daily wear.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/d4af37?text=Gold+Bracelet",
+    "category": "Anti Tarnish",
+    "tag": ""
+  },
+  {
+    "id": 7,
+    "title": "Jhumka Earrings with Chain",
+    "price": 449,
+    "description": "Traditional jhumka earrings with ear chain. One gram gold finish. Perfect for weddings and functions.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/d4af37?text=Jhumka+Set",
+    "category": "One Gram Gold",
+    "tag": "bestseller"
+  },
+  {
+    "id": 8,
+    "title": "Oxidized Necklace with Earrings",
+    "price": 799,
+    "description": "Stunning oxidized necklace set with matching earrings. Perfect for fusion and ethnic styling.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/808080?text=Oxidized+Necklace",
+    "category": "Oxidized",
+    "tag": ""
+  },
+  {
+    "id": 9,
+    "title": "AD Bridal Necklace Set",
+    "price": 1599,
+    "description": "Grand American Diamond bridal necklace set with earrings and maangtika. Heavy stone work, perfect for brides.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/87ceeb?text=AD+Bridal+Set",
+    "category": "AD Stone",
+    "tag": "new"
+  },
+  {
+    "id": 10,
+    "title": "Imitation Pearl Necklace",
+    "price": 399,
+    "description": "Elegant multi-layer pearl necklace set with drop earrings. Classic look for parties and events.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/fffff0?text=Pearl+Necklace",
+    "category": "Imitation Jewelry",
+    "tag": ""
+  },
+  {
+    "id": 11,
+    "title": "Anti Tarnish Temple Necklace",
+    "price": 899,
+    "description": "South Indian style temple necklace with anti-tarnish coating. Long lasting shine, beautiful design.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/d4af37?text=Temple+Necklace",
+    "category": "Anti Tarnish",
+    "tag": "bestseller"
+  },
+  {
+    "id": 12,
+    "title": "Imitation Stone Finger Ring Set",
+    "price": 249,
+    "description": "Set of 6 adjustable finger rings with colorful stone work. Mix and match for a stylish look.",
+    "image": "https://via.placeholder.com/400x400/1a1a2e/ff69b4?text=Ring+Set",
+    "category": "Imitation Jewelry",
+    "tag": ""
+  }
+]

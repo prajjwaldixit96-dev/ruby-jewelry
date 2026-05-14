@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Ruby Jewelry - Premium Handcrafted Jewelry{% endblock %}
+
+{% block content %}
+
+{% if not request.GET.q %}
+<div class="hero-banner text-center py-5 mb-5 rounded-3"
+     style="background: linear-gradient(135deg, #1a1200 0%, #0d0d0d 50%, #1a1200 100%);
+            border: 1px solid #2a1e00;">
+    <p style="color: var(--gold); font-size:0.85rem; letter-spacing:3px; text-transform:uppercase;">Welcome to</p>
+    <h1 style="font-family:'Playfair Display',serif; color:#fff; font-size:2.8rem; font-weight:700;">
+        Ruby <span style="color:var(--gold);">Jewelry</span>
+    </h1>
+    <p class="text-muted mt-2" style="font-size:1rem; max-width:500px; margin:0 auto;">
+        Timeless beauty, premium craftsmanship — jewelry for every occasion
+    </p>
+    <a href="/collection/" class="btn btn-gold mt-4 px-4 py-2">
+        <i class="bi bi-gem me-2"></i> Explore Nawabi Collection
+    </a>
+</div>
+{% endif %}
+
+<div class="text-center mb-4">
+    <a href="/" class="cat-chip {% if not request.GET.category and not request.GET.q %}active{% endif %}">All Products</a>
+    {% for cat in nav_categories %}
+    <a href="/collection/?category={{ cat }}" class="cat-chip">{{ cat }}</a>
+    {% endfor %}
+</div>
+
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <h2 class="section-heading">
+        {% if request.GET.q %}Search: "{{ request.GET.q }}"{% else %}Latest Products{% endif %}
+    </h2>
+    <span style="color:#666; font-size:0.85rem;">{{ products|length }} items found</span>
+</div>
+
+{% if products %}
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    {% for product in products %}
+    <div class="col">
+        <div class="product-card">
+            <div style="position:relative; overflow:hidden;">
+                <a href="/product/{{ product.id }}/">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}"
+                         alt="{{ product.title }}"
+                         style="height:240px; width:100%; object-fit:cover; transition:transform 0.3s;"
+                         onmouseover="this.style.transform='scale(1.05)'"
+                         onmouseout="this.style.transform='scale(1)'">
+                    {% else %}
+                    <div style="height:240px; width:100%; background:#1a1a1a; display:flex; align-items:center; justify-content:center;">
+                        <i class="bi bi-image" style="font-size:3rem; color:#333;"></i>
+                    </div>
+                    {% endif %}
+                </a>
+                {% if product.category %}
+                <span style="position:absolute; bottom:8px; right:8px;
+                             background:rgba(0,0,0,0.75); color:var(--gold);
+                             font-size:0.7rem; padding:3px 8px; border-radius:20px;
+                             font-weight:600;">
+                    {{ product.category }}
+                </span>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <h6>
+                    <a href="/product/{{ product.id }}/" class="product-title">{{ product.title }}</a>
+                </h6>
+                <p class="text-muted" style="font-size:0.8rem; margin-bottom:10px;">
+                    {{ product.description|truncatewords:12 }}
+                </p>
+                <div class="product-price mb-3">₹ {{ product.price }}</div>
+                <div class="d-flex gap-2">
+                    <a href="/cart/add/{{ product.id }}/" class="btn btn-gold btn-sm flex-fill">
+                        <i class="bi bi-bag-plus me-1"></i> Add to Cart
+                    </a>
+                    <a href="https://wa.me/918081501338?text=Hi%20Ruby%20Jewelry%2C%20I%20want%20to%20order%3A%20{{ product.title|urlencode }}%20%E2%82%B9{{ product.price }}"
+                       target="_blank" class="btn btn-whatsapp btn-sm px-2">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div class="text-center py-5">
+    <i class="bi bi-search" style="font-size:3rem; color:#333;"></i>
+    <h5 class="mt-3" style="color:#666;">No products found</h5>
+    <p style="color:#555;">Try a different search term</p>
+    <a href="/" class="btn btn-outline-gold mt-2">Back to Home</a>
+</div>
+{% endif %}
+
+{% endblock %}
