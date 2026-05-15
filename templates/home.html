@@ -36,7 +36,7 @@
 </div>
 
 {% if products %}
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+<div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
     {% for product in products %}
     <div class="col">
         <div class="product-card">
@@ -45,38 +45,38 @@
                     {% if product.image %}
                     <img src="{{ product.image.url }}"
                          alt="{{ product.title }}"
-                         style="height:240px; width:100%; object-fit:cover; transition:transform 0.3s;"
+                         style="height:180px; width:100%; object-fit:cover; transition:transform 0.3s;"
                          onmouseover="this.style.transform='scale(1.05)'"
                          onmouseout="this.style.transform='scale(1)'">
                     {% else %}
-                    <div style="height:240px; width:100%; background:#1a1a1a; display:flex; align-items:center; justify-content:center;">
-                        <i class="bi bi-image" style="font-size:3rem; color:#333;"></i>
+                    <div style="height:180px; width:100%; background:#1a1a1a; display:flex; align-items:center; justify-content:center;">
+                        <i class="bi bi-image" style="font-size:2rem; color:#333;"></i>
                     </div>
                     {% endif %}
                 </a>
                 {% if product.category %}
-                <span style="position:absolute; bottom:8px; right:8px;
+                <span style="position:absolute; bottom:6px; right:6px;
                              background:rgba(0,0,0,0.75); color:var(--gold);
-                             font-size:0.7rem; padding:3px 8px; border-radius:20px;
+                             font-size:0.6rem; padding:2px 6px; border-radius:20px;
                              font-weight:600;">
                     {{ product.category }}
                 </span>
                 {% endif %}
             </div>
-            <div class="card-body">
-                <h6>
+            <div class="card-body" style="padding:8px;">
+                <h6 style="font-size:0.82rem; margin-bottom:4px;">
                     <a href="/product/{{ product.id }}/" class="product-title">{{ product.title }}</a>
                 </h6>
-                <p class="text-muted" style="font-size:0.8rem; margin-bottom:10px;">
-                    {{ product.description|truncatewords:12 }}
+                <p class="text-muted" style="font-size:0.72rem; margin-bottom:6px;">
+                    {{ product.description|truncatewords:8 }}
                 </p>
-                <div class="product-price mb-3">₹ {{ product.price }}</div>
-                <div class="d-flex gap-2">
-                    <a href="/cart/add/{{ product.id }}/" class="btn btn-gold btn-sm flex-fill">
+                <div class="product-price mb-2" style="font-size:0.9rem;">₹ {{ product.price }}</div>
+                <div class="d-flex gap-1">
+                    <a href="/cart/add/{{ product.id }}/" class="btn btn-gold btn-sm flex-fill" style="font-size:0.72rem; padding:4px 6px;">
                         <i class="bi bi-bag-plus me-1"></i> Add to Cart
                     </a>
                     <a href="https://wa.me/918081501338?text=Hi%20Ruby%20Jewelry%2C%20I%20want%20to%20order%3A%20{{ product.title|urlencode }}%20%E2%82%B9{{ product.price }}"
-                       target="_blank" class="btn btn-whatsapp btn-sm px-2">
+                       target="_blank" class="btn btn-whatsapp btn-sm px-2" style="font-size:0.72rem;">
                         <i class="bi bi-whatsapp"></i>
                     </a>
                 </div>
