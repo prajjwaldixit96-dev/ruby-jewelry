@@ -1,23 +1,17 @@
 from pathlib import Path
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-local-dev-only-change-me")
+SECRET_KEY = "django-insecure-change-this-in-production-ruby-jewelry-2026"
 
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-cloudinary.config(
-    cloud_name = os.environ.get("CLOUDINARY_CLOUD_NAME", "duxdpgfxo"),
-    api_key    = os.environ.get("CLOUDINARY_API_KEY", "392614977986943"),
-    api_secret = os.environ.get("CLOUDINARY_API_SECRET", "hdaf1IEePbac0zf9_kg_Vl70cpg"),
-)
-
+# ── Apps ──────────────────────────────────────────────────────
+# NOTE: accounts, orders, dashboard apps removed.
+# Cart is now session-based. Products are JSON-based.
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -25,15 +19,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "cloudinary_storage",
-    "cloudinary",
+    # Project apps
     "products",
     "cart",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -62,6 +54,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "core.wsgi.application"
 
+# ── Database ───────────────────────────────────────────────────
+# Only needed for Django admin. Products & cart don't use DB.
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -69,18 +63,20 @@ DATABASES = {
     }
 }
 
+# ── Session ────────────────────────────────────────────────────
+# Session-based cart (no login required)
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
-SESSION_COOKIE_AGE = 86400 * 7
+SESSION_COOKIE_AGE = 86400 * 7   # 7 days
 
+# ── Static & Media ─────────────────────────────────────────────
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
+# ── Internationalisation ───────────────────────────────────────
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Asia/Kolkata"
 USE_I18N = True
