@@ -5,19 +5,40 @@
 {% block content %}
 
 {% if not request.GET.q %}
-<div class="hero-banner text-center py-5 mb-5 rounded-3"
-     style="background: linear-gradient(135deg, #1a1200 0%, #0d0d0d 50%, #1a1200 100%);
-            border: 1px solid #2a1e00;">
-    <p style="color: var(--gold); font-size:0.85rem; letter-spacing:3px; text-transform:uppercase;">Welcome to</p>
-    <h1 style="font-family:'Playfair Display',serif; color:#fff; font-size:2.8rem; font-weight:700;">
-        Ruby <span style="color:var(--gold);">Jewelry</span>
-    </h1>
-    <p style="color:#cccccc; font-size:1rem; max-width:500px; margin:0 auto;">
-        Timeless beauty, premium craftsmanship — jewelry for every occasion
-    </p>
-    <a href="/collection/" class="btn btn-gold mt-4 px-4 py-2">
-        <i class="bi bi-gem me-2"></i> Explore Nawabi Collection
-    </a>
+<div class="hero-banner text-center mb-5 rounded-3"
+     style="position:relative; overflow:hidden; border: 1px solid #2a1e00; min-height: 320px;">
+
+    <!-- Rumi Darwaza background -->
+    <div style="position:absolute; inset:0; z-index:0;
+                background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/Rumi_Darwaza_at_Night.JPG');
+                background-size:cover; background-position:center center;
+                filter:brightness(0.35) sepia(0.3);"></div>
+
+    <!-- Gold gradient overlay -->
+    <div style="position:absolute; inset:0; z-index:1;
+                background: linear-gradient(135deg,
+                    rgba(26,18,0,0.6) 0%,
+                    rgba(13,13,13,0.3) 50%,
+                    rgba(26,18,0,0.6) 100%);"></div>
+
+    <!-- Content -->
+    <div style="position:relative; z-index:2; padding: 60px 20px;">
+        <p style="color: var(--gold); font-size:0.85rem; letter-spacing:3px; text-transform:uppercase;
+                  text-shadow: 0 0 20px rgba(212,175,55,0.5);">Welcome to</p>
+        <h1 style="font-family:'Playfair Display',serif; color:#fff; font-size:2.8rem; font-weight:700;
+                   text-shadow: 0 2px 20px rgba(0,0,0,0.8);">
+            Ruby <span style="color:var(--gold);">Jewelry</span>
+        </h1>
+        <p style="color:#e0d5b8; font-size:1rem; max-width:500px; margin:0 auto;
+                  text-shadow: 0 1px 8px rgba(0,0,0,0.9);">
+            Timeless beauty, premium craftsmanship — jewelry for every occasion
+        </p>
+        <p style="color:var(--gold); font-size:0.78rem; letter-spacing:2px; margin-top:8px;
+                  opacity:0.8; text-transform:uppercase;">✦ Inspired by the Nawabi Heritage of Lucknow ✦</p>
+        <a href="/collection/" class="btn btn-gold mt-4 px-4 py-2">
+            <i class="bi bi-gem me-2"></i> Explore Nawabi Collection
+        </a>
+    </div>
 </div>
 {% endif %}
 
